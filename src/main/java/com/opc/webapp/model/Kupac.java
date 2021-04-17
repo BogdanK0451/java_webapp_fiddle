@@ -7,7 +7,7 @@ public class Kupac {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private Integer Id;
 
     private String Naziv;
     @ManyToOne
@@ -17,18 +17,17 @@ public class Kupac {
     public Kupac() {
     }
 
-    public Kupac(int id, String naziv, Grad grad, boolean aktivan) {
-        Id = id;
+    public Kupac(String naziv, Grad grad, boolean aktivan) {
         Naziv = naziv;
         Grad = grad;
         Aktivan = aktivan;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 

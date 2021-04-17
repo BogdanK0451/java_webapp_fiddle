@@ -8,18 +8,17 @@ public class Grad {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    private int Id;
+    private Integer Id;
     private String Naziv;
 
     public Grad() {
     }
 
-    public Grad(int id, String naziv) {
-        Id = id;
+    public Grad(String naziv) {
         Naziv = naziv;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 

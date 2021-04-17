@@ -7,7 +7,7 @@ public class KarticaDozvoljeniGrad {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private Integer Id;
 
     @OneToOne
     private Kartica Kartica;
@@ -17,17 +17,16 @@ public class KarticaDozvoljeniGrad {
     public KarticaDozvoljeniGrad() {
     }
 
-    public KarticaDozvoljeniGrad(int id, Kartica kartica, Grad grad) {
-        Id = id;
+    public KarticaDozvoljeniGrad(Kartica kartica, Grad grad) {
         Kartica = kartica;
         Grad = grad;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 

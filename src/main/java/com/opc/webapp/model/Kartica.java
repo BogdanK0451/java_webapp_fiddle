@@ -9,34 +9,33 @@ public class Kartica {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private Integer Id;
     @Column(unique = true)
-    private int Broj_kartice;
+    private Integer Broj_kartice;
     @OneToMany
     private Set<Kupac> Kupac;
 
     public Kartica() {
     }
 
-    public Kartica(int id, int broj_kartice, Set<Kupac> kupac) {
-        Id = id;
+    public Kartica(Integer broj_kartice, Set<Kupac> kupac) {
         Broj_kartice = broj_kartice;
         Kupac = kupac;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
-    public int getBroj_kartice() {
+    public Integer getBroj_kartice() {
         return Broj_kartice;
     }
 
-    public void setBroj_kartice(int broj_kartice) {
+    public void setBroj_kartice(Integer broj_kartice) {
         Broj_kartice = broj_kartice;
     }
 
