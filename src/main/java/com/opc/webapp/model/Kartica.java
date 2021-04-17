@@ -12,13 +12,13 @@ public class Kartica {
     private Integer Id;
     @Column(unique = true)
     private Integer Broj_kartice;
-    @OneToMany
-    private Set<Kupac> Kupac;
+    @ManyToOne
+    private Kupac Kupac;
 
     public Kartica() {
     }
 
-    public Kartica(Integer broj_kartice, Set<Kupac> kupac) {
+    public Kartica(Integer broj_kartice, Kupac kupac) {
         Broj_kartice = broj_kartice;
         Kupac = kupac;
     }
@@ -39,11 +39,11 @@ public class Kartica {
         Broj_kartice = broj_kartice;
     }
 
-    public Set<Kupac> getKupac() {
+    public Kupac getKupac() {
         return Kupac;
     }
 
-    public void setKupac(Set<Kupac> kupac) {
+    public void setKupac(Kupac kupac) {
         Kupac = kupac;
     }
 
