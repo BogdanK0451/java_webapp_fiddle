@@ -1,0 +1,62 @@
+package com.opc.webapp.model;
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+public class KarticaDozvoljeniGrad {
+
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int Id;
+
+    @OneToOne
+    private Kartica Kartica;
+    @OneToOne
+    private Grad Grad;
+
+    public KarticaDozvoljeniGrad() {
+    }
+
+    public KarticaDozvoljeniGrad(int id, Kartica kartica, Grad grad) {
+        Id = id;
+        Kartica = kartica;
+        Grad = grad;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public Kartica getKartica() {
+        return Kartica;
+    }
+
+    public void setKartica(Kartica kartica) {
+        Kartica = kartica;
+    }
+
+    public Grad getGrad() {
+        return Grad;
+    }
+
+    public void setGrad(Grad grad) {
+        Grad = grad;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KarticaDozvoljeniGrad that = (KarticaDozvoljeniGrad) o;
+        return Id == that.Id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id);
+    }
+}
