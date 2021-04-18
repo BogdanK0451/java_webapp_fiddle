@@ -9,16 +9,16 @@ public class KarticaDozvoljeniGrad {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
     @OneToOne
-    private Kartica Kartica;
+    private Kartica kartica;
     @OneToOne
-    private Grad Grad;
+    private Grad grad;
 
     public KarticaDozvoljeniGrad() {
     }
 
     public KarticaDozvoljeniGrad(Kartica kartica, Grad grad) {
-        Kartica = kartica;
-        Grad = grad;
+        this.kartica = kartica;
+        this.grad = grad;
     }
 
     public Integer getId() {
@@ -30,19 +30,19 @@ public class KarticaDozvoljeniGrad {
     }
 
     public Kartica getKartica() {
-        return Kartica;
+        return kartica;
     }
 
     public void setKartica(Kartica kartica) {
-        Kartica = kartica;
+        this.kartica = kartica;
     }
 
     public Grad getGrad() {
-        return Grad;
+        return grad;
     }
 
     public void setGrad(Grad grad) {
-        Grad = grad;
+        this.grad = grad;
     }
 
     @Override

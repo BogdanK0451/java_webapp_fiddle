@@ -1,6 +1,7 @@
 package com.opc.webapp.controllers;
 import java.util.*;
 
+import com.opc.webapp.model.KarticaDozvoljeniGrad;
 import com.opc.webapp.model.Kupac;
 
 
@@ -21,6 +22,7 @@ public class MainController {
     static Integer brojKartica=0;
     //Set for ignoring duplicates
     static TreeSet<String> listaGradova= new TreeSet<String>();
+    Iterable<KarticaDozvoljeniGrad> valuesToInsert;
 
     public MainController(GradRepository gradRepository, KupacRepository kupacRepository, KarticaRepository karticaRepository, KarticaDozvoljeniGradRepository karticaDozvoljeniGradRepository) {
         this.gradRepository = gradRepository;
@@ -39,20 +41,34 @@ public class MainController {
 
     @RequestMapping(value="/", method= RequestMethod.POST)
     public String postData(Model model) {
+        var kupci = kupacRepository.findAll();
+        var gradovi = gradRepository.findAll();
+        var kartice = karticaRepository.findAll();
+        var dozvoljeniGradovi = karticaDozvoljeniGradRepository.findAll();
+
+        kartice.forEach((kartica)->{
+            kupci.forEach((kupac)-> {
+                if(kartica.getKupac().getId().equals(kupac.getId()))
+                    //if the row doesn't exist in the table, add it
+                    if((karticaDozvoljeniGradRepository.findByKarticaAndGrad(kartica,kupac.getGrad())).size()==0)
+                       karticaDozvoljeniGradRepository.save(new KarticaDozvoljeniGrad(kartica,kupac.getGrad()));
+
+            });
+        });
+
         model.addAttribute("data", queryingLogic(false));
         return "data";
     }
 
-    private List<RezPretrage> queryingLogic(boolean isALlKupciSelected){
+    private List<RezPretrage> queryingLogic(boolean isAllKupciSelected){
 
         Iterable<Kupac> kupci;
 
-        var gradovi = gradRepository.findAll();
-
-        if(isALlKupciSelected)
+        if(isAllKupciSelected)
             kupci = kupacRepository.findAll();
         else
             kupci = kupacRepository.findByAktivanTrue();
+        var gradovi = gradRepository.findAll();
         var kartice = karticaRepository.findAll();
         var dozvoljeniGradovi = karticaDozvoljeniGradRepository.findAll();
         List<RezPretrage> rezPretrage = new ArrayList<RezPretrage>();
