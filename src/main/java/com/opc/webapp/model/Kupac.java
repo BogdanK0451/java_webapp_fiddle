@@ -12,7 +12,7 @@ public class Kupac {
     private String Naziv;
     @ManyToOne
     private Grad Grad;
-    private boolean Aktivan;
+    private boolean aktivan;
 
     public Kupac() {
     }
@@ -20,7 +20,7 @@ public class Kupac {
     public Kupac(String naziv, Grad grad, boolean aktivan) {
         Naziv = naziv;
         Grad = grad;
-        Aktivan = aktivan;
+        this.aktivan = aktivan;
     }
 
     public Integer getId() {
@@ -48,11 +48,11 @@ public class Kupac {
     }
 
     public boolean isAktivan() {
-        return Aktivan;
+        return this.aktivan;
     }
 
     public void setAktivan(boolean aktivan) {
-        Aktivan = aktivan;
+        this.aktivan = aktivan;
     }
 
     @Override

@@ -8,7 +8,6 @@ public class KarticaDozvoljeniGrad {
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
-
     @OneToOne
     private Kartica Kartica;
     @OneToOne
