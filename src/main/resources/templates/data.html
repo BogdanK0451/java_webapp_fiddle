@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/actions.js}"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>opc data</title>
+</head>
+<body>
+<h1>Data</h1>
+
+<form action="/" method="GET">
+<input type="hidden" name="type" value="fill">
+<button type="submit" value="Traži">Traži</button>
+</form>
+<form action="/" method="GET">
+    <button type="submit" th:onclick="deleteColumns()" >Akcija</button>
+</form>
+
+<table id="data" class="table">
+  <tr>
+      <th>Naziv Kupca</th>
+      <th>Aktivan</th>
+      <th>Matični Grad</th>
+      <th>Ukupan Broj Kartica</th>
+      <th>Dozvoljeni Gradovi</th>
+  </tr>
+  <tr th:each="el : ${data}">
+      <td th:text="${el.Naziv}"></td>
+      <div th:switch="${el.Aktivan}">
+          <td th:case="true">✓</td>
+          <td th:case="false">x</td>
+      </div>
+      <td th:text="${el.Grad}"></td>
+      <td th:text="${el.BrojKartica}"></td>
+  </tr>
+</table>
+
+</body>
+
+
+
+</html>
